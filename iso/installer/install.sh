@@ -878,7 +878,7 @@ PATH="$PATH:/opt/tpot/bin"
 EOF
 done
 
-wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 45c1f2f1-a811-4ba6-af16-decc66dd00bb -s +MBsRS1aAyTijrt+pJiqqB52HtZbQPWkMlYnsblEnz18qydgAIQSO3c0jjNPMpZh2u0gHyZHA8I5x2siT1rmsA== -d opinsights.azure.com
+
 apt install -y zabbix-agent
 cp /opt/tpot/zabbix.conf /etc/zabbix/zabbix-agent.conf
 systemctl enable zabbix-agent
