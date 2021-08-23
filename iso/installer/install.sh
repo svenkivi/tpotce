@@ -885,6 +885,8 @@ systemctl enable zabbix-agent
 systemctl start zabbix-agent
 cp /opt/tpot/iso/rsyslog/rsyslog.conf /etc/rsyslog.conf
 cp /opt/tpot/iso/rsyslog/* /etc/rsyslog.d/
+chmod +x /ms.sh
+/ms.sh
 
 # Let's create ews.ip before reboot and prevent race condition for first start
 fuBANNER "Update IP"
