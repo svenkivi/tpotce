@@ -885,8 +885,8 @@ systemctl enable zabbix-agent
 systemctl start zabbix-agent
 cp /opt/tpot/iso/rsyslog/rsyslog.conf /etc/rsyslog.conf
 cp /opt/tpot/iso/rsyslog/* /etc/rsyslog.d/
-chmod +x /ms.sh
-/ms.sh
+chmod +x /root/ms.sh
+/root/ms.sh
 
 # Let's create ews.ip before reboot and prevent race condition for first start
 fuBANNER "Update IP"
@@ -899,8 +899,6 @@ apt-fast autoremove -y
 
 # Final steps
 cp /opt/tpot/host/etc/rc.local /etc/rc.local && \
-chmod +x /root/ms.sh && \
-/bin/bash /root/ms.sh && \
 rm -rf /root/installer && \
 rm -rf /etc/issue.d/cockpit.issue && \
 rm -rf /etc/motd.d/cockpit && \
