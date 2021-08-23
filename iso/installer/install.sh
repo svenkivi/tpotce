@@ -880,7 +880,7 @@ done
 
 
 apt install -y zabbix-agent
-cp /opt/tpot/zabbix.conf /etc/zabbix/zabbix-agent.conf
+cp /opt/tpot/zabbix.conf /etc/zabbix/zabbix_agentd.conf
 systemctl enable zabbix-agent
 systemctl start zabbix-agent
 cp /opt/tpot/iso/rsyslog/rsyslog.conf /etc/rsyslog.conf
