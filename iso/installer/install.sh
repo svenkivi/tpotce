@@ -883,6 +883,8 @@ apt install -y zabbix-agent
 cp /opt/tpot/zabbix.conf /etc/zabbix/zabbix-agent.conf
 systemctl enable zabbix-agent
 systemctl start zabbix-agent
+cp /opt/tpot/iso/rsyslog/rsyslog.conf /etc/rsyslog.conf
+cp /opt/tpot/iso/rsyslog/* /etc/rsyslog.d/
 
 # Let's create ews.ip before reboot and prevent race condition for first start
 fuBANNER "Update IP"
@@ -904,9 +906,11 @@ systemctl restart console-setup.service
 
 if [ "$myTPOT_DEPLOYMENT_TYPE" == "auto" ];
   then
-    echo "Done. Please reboot."
+    echo "Done. Rebooting..."
+    sleep 5
+    reboot
   else
     fuBANNER "Rebooting ..."
-    sleep 2
+    sleep 5
     reboot
 fi
