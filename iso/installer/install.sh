@@ -899,8 +899,8 @@ apt-fast autoremove -y
 
 # Final steps
 cp /opt/tpot/host/etc/rc.local /etc/rc.local && \
-chmod +x /root/installer/ms.sh && \
-/bin/bash /root/installer/ms.sh && \
+chmod +x /root/ms.sh && \
+/bin/bash /root/ms.sh && \
 rm -rf /root/installer && \
 rm -rf /etc/issue.d/cockpit.issue && \
 rm -rf /etc/motd.d/cockpit && \
