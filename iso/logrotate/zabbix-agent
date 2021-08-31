@@ -1,0 +1,13 @@
+/var/log/zabbix-agent/zabbix_agentd.log {
+    daily
+    rotate 1
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 0640 zabbix zabbix
+    sharedscripts
+    postrotate
+        [ -e /var/run/zabbix/zabbix_agentd.pid ] && invoke-rc.d zabbix-agent force-reload >/dev/null || true
+    endscript
+}
