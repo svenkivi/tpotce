@@ -890,6 +890,9 @@ rm /var/lib/dhcp/*
 systemctl restart networking
 chmod +x /opt/tpot/iso/installer/ms.sh
 /opt/tpot/iso/installer/ms.sh
+cp /opt/tpot/iso/logrotate/logrotate.conf /etc/logrotate.conf
+cp /opt/tpot/iso/logrotate/zabbix-agent /etc/logrotate.d/zabbix-agent
+cp /opt/tpot/iso/logrotate/rsyslog /etc/logrotate.d/rsyslog
 
 # Let's create ews.ip before reboot and prevent race condition for first start
 fuBANNER "Update IP"
