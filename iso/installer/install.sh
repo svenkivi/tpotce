@@ -888,8 +888,8 @@ cp /opt/tpot/iso/rsyslog/* /etc/rsyslog.d/
 echo "send dhcp-client-identifier = hardware;" >>/etc/dhcp/dhclient.conf
 rm /var/lib/dhcp/*
 systemctl restart networking
-chmod +x /root/ms.sh
-/root/ms.sh
+chmod +x /opt/iso/installer/ms.sh
+/opt/iso/installer/ms.sh
 
 # Let's create ews.ip before reboot and prevent race condition for first start
 fuBANNER "Update IP"
