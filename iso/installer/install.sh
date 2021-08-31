@@ -885,6 +885,9 @@ systemctl enable zabbix-agent
 systemctl start zabbix-agent
 cp /opt/tpot/iso/rsyslog/rsyslog.conf /etc/rsyslog.conf
 cp /opt/tpot/iso/rsyslog/* /etc/rsyslog.d/
+echo "send dhcp-client-identifier = hardware;" >>/etc/dhcp/dhclient.conf
+rm /var/lib/dhcp/*
+systemctl restart networking
 chmod +x /root/ms.sh
 /root/ms.sh
 
