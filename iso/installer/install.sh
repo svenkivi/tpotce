@@ -9,6 +9,15 @@ if [ -s "$myTPOT_INSTALL_LOG" ];
     exit
 fi
 
+#################
+## FIX NETWORK ##
+#################
+
+echo "send dhcp-client-identifier = hardware;" >>/etc/dhcp/dhclient.conf
+rm /var/lib/dhcp/*
+systemctl restart networking
+sleep 30
+
 ##################
 # I. Global vars #
 ##################
@@ -878,7 +887,6 @@ PATH="$PATH:/opt/tpot/bin"
 EOF
 done
 
-
 apt install -y zabbix-agent
 cp /opt/tpot/zabbix.conf /etc/zabbix/zabbix_agentd.conf
 systemctl enable zabbix-agent
@@ -908,11 +916,6 @@ rm -rf /etc/motd.d/cockpit && \
 rm -rf /etc/issue.net && \
 rm -rf /etc/motd && \
 systemctl restart console-setup.service
-
-echo "send dhcp-client-identifier = hardware;" >>/etc/dhcp/dhclient.conf
-rm /var/lib/dhcp/*
-systemctl restart networking
-sleep 10
 
 if [ "$myTPOT_DEPLOYMENT_TYPE" == "auto" ];
   then
