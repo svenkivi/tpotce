@@ -64,20 +64,20 @@ shuffle() {
   done
 }
 # if we have dig and a list of dns methods, try that first
-if hash dig 2>/dev/null && [ ${#dnslist[*]} -gt 0 ]; then
-  eval array=( \"\${dnslist[@]}\" )
-  shuffle
-  for cmd in "${array[@]}"; do
-    [ "$verbose" == 1 ] && echo Trying: $cmd 1>&2
-    ip=$(timeout $timeout $cmd)
-    if [ -n "$ip" ]; then
-      if valid_ip $ip; then
-        echo $ip 
-        exit
-      fi
-    fi
-  done
-fi
+# if hash dig 2>/dev/null && [ ${#dnslist[*]} -gt 0 ]; then
+#   eval array=( \"\${dnslist[@]}\" )
+#   shuffle
+#   for cmd in "${array[@]}"; do
+#     [ "$verbose" == 1 ] && echo Trying: $cmd 1>&2
+#     ip=$(timeout $timeout $cmd)
+#     if [ -n "$ip" ]; then
+#       if valid_ip $ip; then
+#         echo $ip 
+#         exit
+#       fi
+#     fi
+#   done
+# fi
 # if we haven't succeeded with DNS, try HTTP
 if [ ${#httplist[*]} == 0 ]; then
   echo "No hosts in httplist array!" >&2
