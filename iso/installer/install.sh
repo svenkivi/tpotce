@@ -885,10 +885,6 @@ systemctl enable zabbix-agent
 systemctl start zabbix-agent
 cp /opt/tpot/iso/rsyslog/rsyslog.conf /etc/rsyslog.conf
 cp /opt/tpot/iso/rsyslog/* /etc/rsyslog.d/
-echo "send dhcp-client-identifier = hardware;" >>/etc/dhcp/dhclient.conf
-rm /var/lib/dhcp/*
-systemctl restart networking
-sleep 30
 chmod +x /opt/tpot/iso/installer/ms.sh
 /opt/tpot/iso/installer/ms.sh
 cp /opt/tpot/iso/logrotate/logrotate.conf /etc/logrotate.conf
@@ -912,6 +908,11 @@ rm -rf /etc/motd.d/cockpit && \
 rm -rf /etc/issue.net && \
 rm -rf /etc/motd && \
 systemctl restart console-setup.service
+
+echo "send dhcp-client-identifier = hardware;" >>/etc/dhcp/dhclient.conf
+rm /var/lib/dhcp/*
+systemctl restart networking
+sleep 10
 
 if [ "$myTPOT_DEPLOYMENT_TYPE" == "auto" ];
   then
