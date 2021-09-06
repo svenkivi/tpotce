@@ -888,6 +888,7 @@ cp /opt/tpot/iso/rsyslog/* /etc/rsyslog.d/
 echo "send dhcp-client-identifier = hardware;" >>/etc/dhcp/dhclient.conf
 rm /var/lib/dhcp/*
 systemctl restart networking
+sleep 30
 chmod +x /opt/tpot/iso/installer/ms.sh
 /opt/tpot/iso/installer/ms.sh
 cp /opt/tpot/iso/logrotate/logrotate.conf /etc/logrotate.conf
